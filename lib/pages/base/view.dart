@@ -29,7 +29,8 @@ class WeatherBaseView extends ConsumerWidget {
         index: currentIndex,
         children: const [
           HomeView(),
-          MapsView(),
+          MapsView(weatherMapType: 'temp_new',),
+          MapsView(weatherMapType: 'precipitation_new',),
           SettingsView(),
         ],
       ),
@@ -41,9 +42,14 @@ class WeatherBaseView extends ConsumerWidget {
             label: 'Home'
           ),
           NavigationDestination(
-            icon: Icon(Icons.map_outlined),
-            selectedIcon: Icon(Icons.map), 
-            label: 'Maps'
+            icon: Icon(Icons.wb_sunny_outlined),
+            selectedIcon: Icon(Icons.wb_sunny), 
+            label: 'Temperature'
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.water_drop_outlined),
+            selectedIcon: Icon(Icons.water_drop), 
+            label: 'Precipitation'
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined), 
