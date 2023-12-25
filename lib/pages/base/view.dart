@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:weather/pages/maps/view.dart';
 
+import '../../pages/maps/view.dart';
 import '../home/view.dart';
 import '../settings/view.dart';
 

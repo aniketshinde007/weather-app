@@ -30,6 +30,7 @@ class HomeView extends ConsumerWidget {
               leading: Icon(Icons.home_outlined),
               title: Text('Home'),
             ),
+
             SliverToBoxAdapter(
               child: ListTile(
                 title: Text(
@@ -113,11 +114,11 @@ class HomeView extends ConsumerWidget {
                 subtitle: const Text('Upcoming 5 days forecast'),
               ),
             ),
+
             SliverList.separated(
               itemCount: 5,
               itemBuilder: (context, index) {
                 var forecast = _.forecasts[index * 8];
-
                 return ListTile(
                   leading: SizedBox(
                     height: 56,
@@ -152,7 +153,7 @@ class HomeView extends ConsumerWidget {
                   ),
                 );
               },
-              separatorBuilder: (context, index) => Divider(),
+              separatorBuilder: (context, index) => const Divider(),
             ),
 
             const SliverToBoxAdapter(

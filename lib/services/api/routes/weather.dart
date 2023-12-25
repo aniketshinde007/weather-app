@@ -6,6 +6,10 @@ class WeatherRoute {
   final Dio dio;
   WeatherRoute(this.dio);
 
+  /// Get current weather data.
+  ///
+  /// [lat] - latitude of the location.
+  /// [lon] - longitude of the location.
   Future<Response<dynamic>> getCurrentData(String lat, String lon) async {
     try {
       return await dio.get(
@@ -22,6 +26,10 @@ class WeatherRoute {
     }
   }
 
+  /// Get weather forecast of the next 5 days.
+  ///
+  /// [lat] - latitude of the location.
+  /// [lon] - longitude of the location.
   Future<Response<dynamic>> getForecastData(String lat, String lon) async {
     try {
       return await dio.get(
@@ -30,21 +38,6 @@ class WeatherRoute {
           'lat': lat,
           'lon': lon,
           'units': 'metric',
-          'appid': Env.openWeatherKey
-        }
-      );
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<Response<dynamic>> getCitiesData(String city) async {
-    try {
-      return await dio.get(
-        '/geo/1.0/direct',
-        queryParameters: {
-          'q': city,
-          'limit': 5,
           'appid': Env.openWeatherKey
         }
       );

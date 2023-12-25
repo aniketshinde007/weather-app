@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weather/constants/svgs.dart';
+
+import '../../constants/svgs.dart';
 
 class BuildingView extends ConsumerWidget {
   final Widget appbarTitle;

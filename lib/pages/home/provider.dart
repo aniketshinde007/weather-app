@@ -1,7 +1,6 @@
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:weather/services/api/api.dart';
 
+import '../../services/api/api.dart';
 import '../../models/day_weather.dart';
 
 part 'provider.g.dart';

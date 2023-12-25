@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:weather/services/database.dart';
+
+import '../services/database.dart';
 
 part 'theme.g.dart';
 
@@ -20,11 +21,13 @@ class AppThemeMode extends _$AppThemeMode {
     }
   }
 
+  /// Change theme of the app
   void changeTheme(ThemeMode theme) async {
     state = theme;
     await ref.read(databaseProvider).putPref('themeMode', theme.name);
   }
 
+  /// Get current theme name
   String currentThemeName() {
     if(state.name == 'system') return 'System default';
     return state.name.replaceFirst(state.name[0], state.name[0].toUpperCase());
@@ -32,6 +35,8 @@ class AppThemeMode extends _$AppThemeMode {
 }
 
 extension ThemeName on ThemeMode {
+
+  /// Get full name of the theme
   String get fullName {
     if(name == 'system') return 'System default';
     return name.replaceFirst(name[0], name[0].toUpperCase());
