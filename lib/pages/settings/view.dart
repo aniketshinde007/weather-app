@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:weather/pages/building/view.dart';
+import 'package:weather/services/theme.dart';
 
 import '../../services/package.dart';
 
@@ -19,15 +22,42 @@ class SettingsView extends ConsumerWidget {
           ),
           SliverList.list(
             children: [
-              const ListTile(
-                leading: Icon(Icons.person_outlined),
-                title: Text('Account'),
-                subtitle: Text('Change your account details'),
+              ListTile(
+                leading: const Icon(Icons.location_city_outlined),
+                title: const Text('Current City'),
+                subtitle: const Text('Nashik, MH, India'),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuildingView(
+                  appbarTitle: Text('Current City')
+                ))),
               ),
-              const ListTile(
-                leading: Icon(Icons.color_lens_outlined),
-                title: Text('Theme'),
-                subtitle: Text('Change application theme'),
+              ListTile(
+                leading: const Icon(Icons.color_lens_outlined),
+                title: const Text('Theme'),
+                subtitle: const Text('Change application theme'),
+                onTap: () {
+                  showAdaptiveDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('Choose theme'),
+                      contentPadding: EdgeInsets.zero,
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: ThemeMode.values.map((theme) => RadioListTile.adaptive(
+                          title: Text(theme.fullName),
+                          value: theme,
+                          groupValue: ref.read(appThemeModeProvider),
+                          onChanged: (theme) => ref.read(appThemeModeProvider.notifier).changeTheme(theme as ThemeMode)
+                        )).toList()
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('OK')
+                        ),
+                      ],
+                    )
+                  );
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.info_outlined),
