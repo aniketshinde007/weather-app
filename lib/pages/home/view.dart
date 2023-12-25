@@ -5,7 +5,6 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather/models/current_weather/current_weather.dart';
 import 'package:weather/pages/home/provider.dart';
 import 'package:weather/pages/loading/view.dart';
 
@@ -38,6 +37,7 @@ class HomeView extends ConsumerWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 subtitle: const Text('Friday, 22 Dec 2023'),
+                trailing: const Text('Nashik, MH, India'),
               ),
             ),
 
@@ -148,55 +148,6 @@ class HomeView extends ConsumerWidget {
                   ),
                   trailing: Text(
                     forecast.weather.first.main,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) => Divider(),
-            ),
-
-            SliverToBoxAdapter(
-              child: ListTile(
-                title: Text(
-                  'History',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                subtitle: const Text('Last 5 days history'),
-              ),
-            ),
-            SliverList.separated(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: SizedBox(
-                    height: 56,
-                    width: 56,
-                    child: CachedNetworkImage(
-                      imageUrl: 'https://openweathermap.org/img/wn/10d.png',
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                  title: Text(
-                    'Saturday',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  subtitle: Row(
-                    children: [
-                      Icon(Icons.umbrella_outlined),
-                      Text(
-                        '0%',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      Text(' • '),
-                      Icon(Icons.air_outlined),
-                      Text(
-                        '12 km/h',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      )
-                    ],
-                  ),
-                  trailing: Text(
-                    '25°/38°',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 );
